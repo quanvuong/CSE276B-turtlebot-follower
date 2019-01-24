@@ -314,6 +314,8 @@ private:
   ros::Publisher bboxpub_;
 };
 
-PLUGINLIB_EXPORT_CLASS(quan_turtlebot_follower_github::QuanTurtlebotFollowerGithub, nodelet::Nodelet)
+PLUGINLIB_DECLARE_CLASS(quan_turtlebot_follower_github, QuanTurtlebotFollowerGithub, quan_turtlebot_follower_github::QuanTurtlebotFollowerGithub, nodelet::Nodelet);
+
+}
 
 }
