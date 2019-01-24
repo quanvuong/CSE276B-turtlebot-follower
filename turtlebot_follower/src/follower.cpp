@@ -41,7 +41,7 @@
 #include <depth_image_proc/depth_traits.h>
 
 
-namespace turtlebot_follower
+namespace quan_turtlebot_follower_github
 {
 
 //* The turtlebot follower nodelet.
@@ -50,14 +50,14 @@ namespace turtlebot_follower
  * from the 3dsensor, processes them, and publishes command vel
  * messages.
  */
-class TurtlebotFollower : public nodelet::Nodelet
+class QuanTurtlebotFollowerGithub : public nodelet::Nodelet
 {
 public:
   /*!
    * @brief The constructor for the follower.
    * Constructor for the follower.
    */
-  TurtlebotFollower() : min_y_(0.1), max_y_(0.5),
+  QuanTurtlebotFollowerGithub() : min_y_(0.1), max_y_(0.5),
                         min_x_(-0.2), max_x_(0.2),
                         max_z_(0.8), goal_z_(0.6),
                         z_scale_(1.0), x_scale_(5.0)
@@ -65,7 +65,7 @@ public:
 
   }
 
-  ~TurtlebotFollower()
+  ~QuanTurtlebotFollowerGithub()
   {
     delete config_srv_;
   }
@@ -110,13 +110,13 @@ private:
     cmdpub_ = private_nh.advertise<geometry_msgs::Twist> ("cmd_vel", 1);
     markerpub_ = private_nh.advertise<visualization_msgs::Marker>("marker",1);
     bboxpub_ = private_nh.advertise<visualization_msgs::Marker>("bbox",1);
-    sub_= nh.subscribe<sensor_msgs::Image>("depth/image_rect", 1, &TurtlebotFollower::imagecb, this);
+    sub_= nh.subscribe<sensor_msgs::Image>("depth/image_rect", 1, &QuanTurtlebotFollowerGithub::imagecb, this);
 
-    switch_srv_ = private_nh.advertiseService("change_state", &TurtlebotFollower::changeModeSrvCb, this);
+    switch_srv_ = private_nh.advertiseService("change_state", &QuanTurtlebotFollowerGithub::changeModeSrvCb, this);
 
     config_srv_ = new dynamic_reconfigure::Server<turtlebot_follower::FollowerConfig>(private_nh);
     dynamic_reconfigure::Server<turtlebot_follower::FollowerConfig>::CallbackType f =
-        boost::bind(&TurtlebotFollower::reconfigure, this, _1, _2);
+        boost::bind(&QuanTurtlebotFollowerGithub::reconfigure, this, _1, _2);
     config_srv_->setCallback(f);
   }
 
@@ -135,7 +135,7 @@ private:
   /*!
    * @brief Callback for point clouds.
    * Callback for depth images. It finds the centroid
-   * of the points in a box in the center of the image. 
+   * of the points in a box in the center of the image.
    * Publishes cmd_vel messages with the goal from the image.
    * @param cloud The point cloud message.
    */
@@ -314,6 +314,6 @@ private:
   ros::Publisher bboxpub_;
 };
 
-PLUGINLIB_EXPORT_CLASS(turtlebot_follower::TurtlebotFollower, nodelet::Nodelet)
+PLUGINLIB_EXPORT_CLASS(quan_turtlebot_follower_github::QuanTurtlebotFollowerGithub, nodelet::Nodelet)
 
 }
