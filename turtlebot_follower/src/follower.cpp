@@ -118,6 +118,8 @@ private:
     dynamic_reconfigure::Server<turtlebot_follower::FollowerConfig>::CallbackType f =
         boost::bind(&QuanTurtlebotFollowerGithub::reconfigure, this, _1, _2);
     config_srv_->setCallback(f);
+
+    ROS_INFO_THROTTLE(1, "max_z: %f, goal_z: %f", max_z_, goal_z_);
   }
 
   void reconfigure(turtlebot_follower::FollowerConfig &config, uint32_t level)
