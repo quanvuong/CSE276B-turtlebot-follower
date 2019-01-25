@@ -319,5 +319,3 @@ private:
 PLUGINLIB_DECLARE_CLASS(quan_turtlebot_follower_github, QuanTurtlebotFollowerGithub, quan_turtlebot_follower_github::QuanTurtlebotFollowerGithub, nodelet::Nodelet);
 
 }
-
-}
