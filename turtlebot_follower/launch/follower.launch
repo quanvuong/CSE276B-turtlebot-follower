@@ -19,10 +19,6 @@
 
   <param name="camera/rgb/image_color/compressed/jpeg_quality" value="22"/>
 
-  <!-- Make a slower camera feed available; only required if we use android client -->
-  <node pkg="topic_tools" type="throttle" name="camera_throttle"
-        args="messages camera/rgb/image_color/compressed 5"/>
-
   <include file="$(find quan_turtlebot_follower_github)/launch/includes/safety_controller.launch.xml"/>
 
   <!--  Real robot: Load turtlebot follower into the 3d sensors nodelet manager to avoid pointcloud serializing -->
