@@ -1,19 +1,6 @@
 <package>
   <name>quan_turtlebot_follower_github</name>
   <version>2.3.7</version>
-  <description>
-       Follower for the turtlebot. Follows humans and robots around by following the centroid of a box points in front of the turtlebot.
-  </description>
-
-  <maintainer email="stonier@rnd.yujinrobot.com">Daniel Stonier</maintainer>
-
-  <license>BSD</license>
-
-  <url type="website">http://ros.org/wiki/turtlebot_apps</url>
-  <url type="repository">https://github.com/turtlebot/turtlebot_apps</url>
-  <url type="bugtracker">https://github.com/turtlebot/turtlebot_apps/issues</url>
-
-  <author email="tony.pratkanis@to.do">Tony Pratkanis</author>
 
   <buildtool_depend>catkin</buildtool_depend>
 
