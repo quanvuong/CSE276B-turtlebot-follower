@@ -1,3 +1,4 @@
+<!-- Copied and modified from the public turtlebot follower codebase -->
 <library path="lib/libquan_turtlebot_follower_github">
   <class name="quan_turtlebot_follower_github/QuanTurtlebotFollowerGithub" type="quan_turtlebot_follower_github::QuanTurtlebotFollowerGithub" base_class_type="nodelet::Nodelet">
     <description>

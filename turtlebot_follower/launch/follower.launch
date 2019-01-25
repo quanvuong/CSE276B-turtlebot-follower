@@ -1,9 +1,16 @@
+<!--
+To run the follower, launch this launch file
+Copied and modified from the public turtlebot follower codebase -->
+
 <launch>
+
+  <!-- Launch the velocity smoother -->
   <include file="$(find quan_turtlebot_follower_github)/launch/includes/velocity_smoother.launch.xml">
     <arg name="nodelet_manager"  value="/mobile_base_nodelet_manager"/>
     <arg name="navigation_topic" value="/cmd_vel_mux/input/navi"/>
   </include>
 
+  <!-- Launch the camera node -->
   <include file="$(find turtlebot_bringup)/launch/3dsensor.launch">
     <arg name="rgb_processing"                  value="true"/>  <!-- only required if we use android client -->
     <arg name="depth_processing"                value="true"/>
@@ -17,6 +24,14 @@
   <param name="camera/rgb/image_color/compressed/jpeg_quality" value="22"/>
 
   <!--  Real robot: Load turtlebot follower into the 3d sensors nodelet manager to avoid pointcloud serializing -->
+  <!-- Notice that we are loading the turtlebot node into the camera_nodelet_manager.
+  The implication of this is that topic name is resolved relative to /camera/
+  Thus, to subscribe to /camera/depth/image_rect, we need only subscribe to depth/image_rect -->
+  <!-- We also output the cmd vel to the velocity smoother node,
+  which smooths the velocity before sending the velocity command to the robot -->
+  <!-- The parameter for the follower is defined below.
+  Which makes it nice to change their value and have the changes reflected by relaunching the launch file.
+  If we change it in the follower.cpp file, then we need to rebuild for the changes to be reflected. -->
   <node pkg="nodelet" type="nodelet" name="quan_turtlebot_follower_github"
         args="load quan_turtlebot_follower_github/QuanTurtlebotFollowerGithub camera/camera_nodelet_manager">
     <remap from="quan_turtlebot_follower_github/cmd_vel" to="follower_velocity_smoother/raw_cmd_vel"/>
