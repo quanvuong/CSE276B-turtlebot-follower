@@ -6,6 +6,10 @@
        Follower for the turtlebot
   </description>
 
+  <maintainer>Quan</maintainer>
+
+  <license>BSD</license>
+
   <buildtool_depend>catkin</buildtool_depend>
 
   <build_depend>depth_image_proc</build_depend>
