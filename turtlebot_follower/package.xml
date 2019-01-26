@@ -2,6 +2,10 @@
   <name>quan_turtlebot_follower_github</name>
   <version>2.3.7</version>
 
+  <description>
+       Follower for the turtlebot
+  </description>
+
   <buildtool_depend>catkin</buildtool_depend>
 
   <build_depend>depth_image_proc</build_depend>
